@@ -1,0 +1,15 @@
+# Ignore temporary backup files
+*.bak
+/tmp/
+node_modules/
+package-lock.json
+package.json
+generate_docs.js
+read_docx.js
+extracted_doc.txt
+extracted_doc.md
+extracted_doc.html
+
+# Ignore Word and PDF documents
+*.docx
+*.pdf
