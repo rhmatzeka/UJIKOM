@@ -61,3 +61,7 @@ Database settings are in `config.php`.
 | `config.php` | Database connection and auto-installer |
 | `database.sql` | Tables and sample data |
 | `dokumentasi.md` | Extra documentation |
+
+## License
+
+Released under the [MIT License](LICENSE).
