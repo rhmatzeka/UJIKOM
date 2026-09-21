@@ -1,54 +1,63 @@
-# FAKTUR.ID - Sistem Kelola Faktur Penjualan
+# FAKTUR.ID: Sales Invoice Manager
 
-Aplikasi **Sistem Kelola Faktur Penjualan (FAKTUR.ID)** yang dibangun menggunakan PHP Native, Tailwind CSS, dan jQuery. Aplikasi ini dirancang untuk memenuhi standar Uji Kompetensi Keahlian (UKK) Skema Programmer.
+A web app for managing **sales invoices**: companies that issue invoices, the customers who receive them, the product catalog, sales transactions, and printable sales reports.
 
-## Fitur Utama
+It was built for a **programmer skills certification exam** (UKK, Programmer scheme). The interface is in Indonesian.
 
-1. **Dashboard Statistik (Beranda)**
-   - Menampilkan total perusahaan, customer, produk, dan total transaksi.
-   - Ringkasan akumulasi total omset penjualan secara real-time.
-   - Tabel ringkas 3 transaksi terbaru.
+## Features
 
-2. **Kelola Perusahaan (Penerbit Faktur)**
-   - CRUD data perusahaan (Nama, Alamat, No. Telp, Fax).
+1. **Dashboard**
+   - Totals for companies, customers, products, and transactions
+   - Total sales revenue, updated in real time
+   - The 3 latest transactions
 
-3. **Kelola Customer (Penerima Faktur)**
-   - CRUD data customer beserta instansi perusahaan customer.
-   - Cetak Kartu Customer dengan layout formal dan menarik.
+2. **Companies** (who issues the invoice)
+   - Add, edit, and delete companies: name, address, phone, fax
 
-4. **Kelola Produk (Katalog Barang)**
-   - CRUD data katalog produk (Nama, Harga, Kategori/Jenis, Stok).
+3. **Customers** (who receives the invoice)
+   - Add, edit, and delete customers and their company
+   - Print a formal **customer card**
 
-5. **Kelola Transaksi Penjualan (Faktur Kasir Dinamis)**
-   - Input baris produk secara dinamis menggunakan jQuery (tombol tambah/hapus baris tanpa reload).
-   - Perhitungan subtotal, PPN (%), Uang Muka (DP), dan Grand Total otomatis di sisi klien.
-   - Transaksi database aman (ACID transaction) dengan auto-update (pemotongan) stok produk secara otomatis.
-   - Cetak Faktur Penjualan siap print (Format A4 print-friendly, menyembunyikan navbar dan sidebar).
+4. **Products**
+   - Add, edit, and delete products: name, price, category, stock
 
-6. **Laporan Rekapitulasi Penjualan (Fitur Cetak Laporan)**
-   - Filter laporan penjualan berdasarkan Rentang Tanggal Mulai & Selesai, Perusahaan Penerbit, Customer Pembeli, dan Metode Pembayaran.
-   - Perhitungan total rekapitulasi (Subtotal, DP, Grand Total) otomatis pada baris footer laporan.
-   - Fitur Cetak Rekapitulasi Laporan Penjualan ramah cetak (print-friendly) lengkap dengan slot tanda tangan pimpinan/administrator.
+5. **Sales transactions** (the invoice itself)
+   - Add and remove product rows on the fly with jQuery (no page reload)
+   - Subtotal, **VAT (%)**, **down payment**, and **grand total** are calculated automatically
+   - Saved as a single database transaction, and **stock is reduced automatically**
+   - Print an A4 invoice (navigation is hidden when printing)
 
-## Tech Stack
+6. **Sales report**
+   - Filter by date range, issuing company, customer, and payment method
+   - Totals (subtotal, down payment, grand total) in the report footer
+   - Printable report with a signature space for the manager
 
-- **Backend:** PHP 8+ (Native)
-- **Database:** MySQL / MariaDB
-- **Frontend UI:** Tailwind CSS (via CDN)
-- **Frontend Logic:** jQuery (via CDN)
+## Tech stack
 
-## Cara Instalasi & Menjalankan Program
+PHP 8 (no framework), MySQL/MariaDB, Tailwind CSS and jQuery (both from a CDN)
 
-1. Clone repositori ini ke dalam direktori server lokal Anda (misal `C:/xampp/htdocs/ujikom/`).
-2. Pastikan service Apache dan MySQL di XAMPP Control Panel Anda sudah berjalan.
-3. Buka web browser Anda, kemudian akses alamat:
-   ```text
-   http://localhost/ujikom/index.php
-   ```
-4. **Auto-Installer Database:** Aplikasi ini dilengkapi fitur *auto-install*. Saat halaman pertama kali diakses, aplikasi akan secara otomatis mendeteksi, membuat database baru bernama `ujikom_faktur`, membuat seluruh tabel, dan melakukan *seeding* data dummy uji coba dari berkas `database.sql`. Anda tidak perlu melakukan import manual melalui phpMyAdmin.
+## Getting started
 
----
+You need PHP 8+ and MySQL or MariaDB (XAMPP works well).
 
-**Asesi Uji Kompetensi Keahlian (UKK):**  
-Nama: **Rahmat Eka Satria**  
-Skema Sertifikasi: **Programmer**
+1. Copy the project into your web server folder, for example `C:/xampp/htdocs/ujikom/`.
+2. Start **Apache** and **MySQL**.
+3. Open http://localhost/ujikom/index.php.
+
+**The database sets itself up.** On the first visit, the app creates a database called `ujikom_faktur`, creates all the tables, and loads sample data from `database.sql`. No manual import is needed.
+
+Database settings are in `config.php`.
+
+## Project structure
+
+| File | What it is |
+| --- | --- |
+| `index.php` | Dashboard |
+| `perusahaan.php` | Companies |
+| `customer.php` | Customers |
+| `produk.php` | Products |
+| `penjualan.php` | Sales transactions and invoices |
+| `laporan.php` | Sales report |
+| `config.php` | Database connection and auto-installer |
+| `database.sql` | Tables and sample data |
+| `dokumentasi.md` | Extra documentation |
